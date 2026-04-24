@@ -12,12 +12,12 @@ source:
 
 build:
   noarch: python
-  number: 1
+  number: 2
   script: "{{ PYTHON }} -m pip install . --no-deps -vv"
 
 requirements:
   host:
-    - python >=3
+    - python {{ python_min }}
     - pip
   run:
     - dxchange
@@ -28,7 +28,7 @@ requirements:
     - pandas
     - pyqt >=5
     - pyqtgraph
-    - python >=3
+    - python >={{ python_min }}
     - scipy
     - seaborn
     - setuptools
@@ -36,6 +36,8 @@ requirements:
     - tomopy
 
 test:
+  requires:
+    - python {{ python_min }}
   imports:
     - xrftomo
 
